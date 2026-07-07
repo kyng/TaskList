@@ -4,9 +4,17 @@ class Project:
     def __init__(self, name, description):
         self.name = name
         self.description = description
+        #Create columns
+        self.columns = {
+            "to_do": Column("To do"),
+            "in_progress": Column("In Progress"),
+            "paused": Column("Paused"),
+            "complete": Column("Complete")
+        }
 
-    def move_task():
-        pass
+    def move_task(self, task, from_col_key, to_col_key):
+        self.columns[from_col_key].remove_task(task)
+        self.columns[to_col_key].add_task(task)
 
 class Column:
     
@@ -35,3 +43,6 @@ class Task:
 
     def __str__(self):
         return f"Task {self.id} - {self.name}: {self.description}. Priority: {self.priority}"
+    
+    def __repr__(self):
+        return self.__str__()
