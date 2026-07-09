@@ -68,8 +68,8 @@ class Task:
     _id_counter = 1
 
     def __init__(self, name: str, description: str, priority = 0):
-        self.id = self._id_counter
-        self._id_counter += 1
+        self.id = Task._id_counter
+        Task._id_counter += 1
 
         self.name = name
         self.description = description
